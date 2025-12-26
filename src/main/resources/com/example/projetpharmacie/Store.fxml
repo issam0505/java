@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.StoreController"
+            stylesheets="@css/store.css"
+            prefHeight="600" prefWidth="800">
+
+    <!-- ===== TOP BAR ===== -->
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <!-- LEFT : LOGO + APP NAME -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fitWidth="50" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/logof2.png"/>
+                    </image>
+                </ImageView>
+                <Text text="SwiftCare" styleClass="app-title"/>
+            </HBox>
+
+            <!-- LEFT SPACER -->
+            <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS"/>
+
+            <!-- CENTER : SEARCH BAR -->
+            <TextField fx:id="searchField" promptText="Rechercher un produit..." styleClass="search-bar"/>
+
+            <!-- RIGHT SPACER -->
+            <Region fx:id="rightSpacer" HBox.hgrow="ALWAYS"/>
+
+            <!-- RIGHT : MENU BUTTON -->
+            <MenuButton fx:id="menuButton" text="☰" styleClass="menu-btn">
+                <HBox.margin>
+                    <Insets top="0" right="20" bottom="0" left="0"/>
+                </HBox.margin>
+            </MenuButton>
+        </HBox>
+    </top>
+
+    <!-- ===== CENTER ===== -->
+    <ScrollPane fitToWidth="true">
+        <VBox fx:id="productContainer" spacing="20" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Text text="Bienvenue dans la Store!" styleClass="welcome-title"/>
+        </VBox>
+    </ScrollPane>
+
+</BorderPane>

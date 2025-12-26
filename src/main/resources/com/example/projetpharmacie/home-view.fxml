@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.HomeController" stylesheets="@css/home.css">
+
+
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT"  styleClass="top-bar">
+            <padding>
+                <Insets top="20" left="20"/>
+            </padding>
+
+            <ImageView fitWidth="90" preserveRatio="true">
+                <image>
+                    <Image url="@../../../images/logof2.png"/>
+                </image>
+            </ImageView>
+
+            <Text text="SwiftCare" styleClass="app-title">
+                <font>
+                    <Font size="26"/>
+                </font>
+            </Text>
+        </HBox>
+    </top>
+
+    <!-- ===== CENTER : CONTENT ===== -->
+    <center>
+        <VBox spacing="20"
+              alignment="CENTER"
+              translateY="10"
+              maxWidth="600"  styleClass="center-card">
+
+            <Text text="Bienvenue chez SwiftCare !"  styleClass="welcome-title">
+                <font>
+                    <Font size="22"/>
+                </font>
+            </Text>
+
+            <Text wrappingWidth="500"
+                  styleClass="description"   text="SwiftCare vous permet de gérer efficacement votre pharmacie, en simplifiant le suivi des clients, des stocks, et des services disponibles, pour une expérience fluide et organisée."/>
+
+            <Button text="Se connecter"
+                    prefWidth="200"
+                    styleClass="btn-primary"
+                    onAction="#goToLogin"/>
+        </VBox>
+    </center>
+
+</BorderPane>

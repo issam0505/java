@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.SignController"
+            stylesheets="@css/sign.css">
+
+    <!-- ===== TOP BAR (نفس Login) ===== -->
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              styleClass="top-bar">
+            <padding>
+                <Insets top="20" left="25"/>
+            </padding>
+
+            <ImageView fitWidth="70" preserveRatio="true">
+                <image>
+                    <Image url="@../../../images/logof2.png"/>
+                </image>
+            </ImageView>
+
+            <Text text="SwiftCare" styleClass="app-title"/>
+        </HBox>
+    </top>
+
+    <!-- ===== CENTER CARD (نفس Login) ===== -->
+    <center>
+        <VBox fx:id="signCard"
+              spacing="18"
+              alignment="CENTER"
+              maxWidth="450"
+              translateY="10"
+              styleClass="login-card">
+
+            <Text text="Sign"
+                  styleClass="login-title"
+                  translateY="-20"/>
+
+            <TextField fx:id="emailField"
+                       promptText="Votre email"
+                       styleClass="input"/>
+
+            <TextField fx:id="usernameField"
+                       promptText="Nom d'utilisateur"
+                       styleClass="input"/>
+
+            <TextField fx:id="telephoneField"
+                       promptText="Votre numero"
+                       styleClass="input"/>
+
+            <PasswordField fx:id="passwordField"
+                           promptText="Mot de passe"
+                           styleClass="input"/>
+
+            <Button text="Se connecter"
+                    onAction="#goToStore"
+                    styleClass="btn-primary"/>
+
+            <Hyperlink text="BACK"
+                       onAction="#goToLogin"
+                       styleClass="link"/>
+
+            <Text fx:id="errorLabel2"
+                  styleClass="error-text"/>
+        </VBox>
+    </center>
+
+</BorderPane>

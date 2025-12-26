@@ -1,0 +1,85 @@
+/* ===== ROOT ===== */
+.root {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #e8faf7);
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: #e5e7eb;
+    -fx-border-width: 0 0 1 0;
+}
+
+.app-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-fill: #0f766e;
+}
+
+/* ===== CARD ===== */
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18;
+    -fx-padding: 35;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 25, 0, 0, 8);
+}
+
+/* ===== TITLE ===== */
+.login-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-fill: #115e59;
+}
+
+/* ===== INPUTS ===== */
+.input {
+    -fx-pref-width: 350;
+    -fx-pref-height: 52;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-border-color: #99f6e4;
+    -fx-padding: 0 15;
+    -fx-font-size: 14px;
+}
+
+.input:focused {
+    -fx-border-color: #14b8a6;
+    -fx-effect: dropshadow(gaussian, rgba(20,184,166,0.4), 10, 0, 0, 0);
+}
+
+/* ===== BUTTON ===== */
+.btn-primary {
+    -fx-pref-width: 300;
+    -fx-pref-height: 44;
+    -fx-background-color: #14b8a6;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 12 30;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+.btn-primary:hover {
+    -fx-background-color: #0f766e;
+    -fx-text-fill: #f0fdfa;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(15,118,110,0.6), 18, 0, 0, 6);
+}
+
+/* ===== LINK ===== */
+.link {
+    -fx-text-fill: #0f766e;
+}
+
+.link:hover {
+    -fx-text-fill: #14b8a6;
+}
+
+/* ===== ERROR ===== */
+.error-text {
+    -fx-fill: #dc2626;
+    -fx-font-size: 12px;
+}
