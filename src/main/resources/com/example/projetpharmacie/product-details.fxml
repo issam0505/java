@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.projetpharmacie.ProductDetailsController"
+      spacing="15"
+      alignment="TOP_CENTER">
+
+    <ImageView fx:id="productImage"
+               fitWidth="250"
+               preserveRatio="true"/>
+
+    <Text fx:id="productName"/>
+    <Text fx:id="productPrice"/>
+    <Text fx:id="productStock"/>
+
+</VBox>

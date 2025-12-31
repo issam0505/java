@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.projetpharmacie.StoreController"
-            stylesheets="@css/store.css"
-            prefHeight="600" prefWidth="800">
+            prefWidth="1100"
+            prefHeight="700"
+            stylesheets="@css/store.css">
 
-    <!-- ===== TOP BAR ===== -->
+    <!-- TOP BAR -->
     <top>
-        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="10">
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              styleClass="top-bar">
+
             <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
+                <Insets top="10" right="20" bottom="10" left="20"/>
             </padding>
 
-            <!-- LEFT : LOGO + APP NAME -->
-            <HBox alignment="CENTER_LEFT" spacing="10">
-                <ImageView fitWidth="50" preserveRatio="true">
+            <HBox spacing="10">
+                <ImageView fitWidth="40" preserveRatio="true">
                     <image>
                         <Image url="@../../../images/logof2.png"/>
                     </image>
@@ -33,32 +38,85 @@
                 <Text text="SwiftCare" styleClass="app-title"/>
             </HBox>
 
-            <!-- LEFT SPACER -->
-            <Region fx:id="leftSpacer" HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS"/>
 
-            <!-- CENTER : SEARCH BAR -->
-            <TextField fx:id="searchField" promptText="Rechercher un produit..." styleClass="search-bar"/>
+            <TextField fx:id="searchField"
+                       styleClass="search-bar"
+                       promptText="Rechercher un produit..."/>
 
-            <!-- RIGHT SPACER -->
-            <Region fx:id="rightSpacer" HBox.hgrow="ALWAYS"/>
+            <Region HBox.hgrow="ALWAYS"/>
 
-            <!-- RIGHT : MENU BUTTON -->
-            <MenuButton fx:id="menuButton" text="☰" styleClass="menu-btn">
-                <HBox.margin>
-                    <Insets top="0" right="20" bottom="0" left="0"/>
-                </HBox.margin>
-            </MenuButton>
+            <MenuButton fx:id="menuButton"
+                        text="☰"
+                        styleClass="menu-btn"/>
         </HBox>
     </top>
 
-    <!-- ===== CENTER ===== -->
-    <ScrollPane fitToWidth="true">
-        <VBox fx:id="productContainer" spacing="20" alignment="TOP_CENTER">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <Text text="Bienvenue dans la Store!" styleClass="welcome-title"/>
-        </VBox>
-    </ScrollPane>
+    <!-- CENTER (SCROLLABLE PAGE) -->
+    <center>
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    vbarPolicy="AS_NEEDED"
+                    styleClass="scroll-pane">
+
+            <VBox spacing="30"
+                  alignment="TOP_CENTER">
+
+                <!-- WELCOME -->
+                <Text text="Votre pharmacie, plus proche de vous"
+                      styleClass="welcome-title" translateY="20"/>
+
+                <Text text="Découvrez une large sélection de produits pharmaceutiques fiables, disponibles immédiatement et adaptés à vos besoins quotidiens."
+                      styleClass="welcome-desc"
+                      wrappingWidth="750"
+                      textAlignment="CENTER"/>
+
+                <!-- PRODUCTS -->
+                <FlowPane fx:id="productContainer"
+                          hgap="20"
+                          vgap="20"
+                          prefWrapLength="1000"
+                          alignment="TOP_LEFT">
+
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                </FlowPane>
+
+                <!-- FOOTER / TIWTIW -->
+                <HBox spacing="15"
+                      alignment="CENTER"
+                      maxHeight="350"
+                      prefWidth="1000"
+                      styleClass="tiwtiw">
+
+                    <VBox spacing="20" alignment="CENTER">
+
+                        <!-- LOGO + NOM -->
+                        <HBox spacing="10" alignment="CENTER">
+                            <ImageView fitWidth="60" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../images/logof2.png"/>
+                                </image>
+                            </ImageView>
+                            <Text text="SwiftCare" styleClass="app-title-footer"/>
+                        </HBox>
+
+                        <!-- AVANTAGES -->
+                        <VBox spacing="8" alignment="CENTER">
+                            <Text text="✔ Produits fiables &amp; disponibles immédiatement" styleClass="footer-advantages"/>
+                            <Text text="✔ Livraison rapide &amp; sécurisée" styleClass="footer-advantages"/>
+                            <Text text="✔ Conseils pharmaceutiques personnalisés" styleClass="footer-advantages"/>
+                        </VBox>
+
+                    </VBox>
+
+                </HBox>
+
+            </VBox>
+
+        </ScrollPane>
+    </center>
 
 </BorderPane>

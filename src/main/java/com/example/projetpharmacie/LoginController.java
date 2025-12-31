@@ -29,8 +29,6 @@ public class LoginController {
 
     @FXML
     private Text errorLabel;
-
-    // ✅ غير هادي زدناها
     @FXML
     private VBox loginCard;
 
@@ -40,7 +38,6 @@ public class LoginController {
     // ===== ANIMATION ONLY =====
     @FXML
     public void initialize() {
-
         if (loginCard == null) return;
 
         loginCard.setOpacity(0);
@@ -69,7 +66,6 @@ public class LoginController {
         slide.play();
         scale.play();
     }
-
     @FXML
     private void goToStore(ActionEvent event) {
         try {

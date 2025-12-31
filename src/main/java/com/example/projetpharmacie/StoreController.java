@@ -1,25 +1,21 @@
 package com.example.projetpharmacie;
 
+import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.Node;
-import javafx.scene.text.Text;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
-import javafx.animation.ParallelTransition;
-import javafx.util.Duration;
-import javafx.event.ActionEvent;
-import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class StoreController {
 
@@ -27,151 +23,161 @@ public class StoreController {
     private MenuButton menuButton;
 
     @FXML
-    private VBox productContainer;
-
-    @FXML
     private TextField searchField;
 
-    // ================= INITIALIZE =================
+    @FXML
+    private FlowPane productContainer;
+
     @FXML
     public void initialize() {
 
-        // ===== MENU =====
-        MenuItem produits = new MenuItem("Produits");
-        MenuItem clients = new MenuItem("Clients");
-        MenuItem logout = new MenuItem("Déconnexion");
+        menuButton.getItems().addAll(
+                new MenuItem("Produits"),
+                new MenuItem("Clients"),
+                new MenuItem("Déconnexion")
+        );
 
-        menuButton.getItems().addAll(produits, clients, logout);
-
-        // ===== ANIMATION =====
-        HBox logoBox = (HBox) ((HBox) menuButton.getParent()).getChildren().get(0);
-        Node search = searchField;
-        Node menu = menuButton;
-
-        logoBox.setOpacity(0);
-        search.setOpacity(0);
-        menu.setOpacity(0);
-
-        ParallelTransition logoAnim = animation(logoBox);
-        ParallelTransition searchAnim = animation(search);
-        ParallelTransition menuAnim = animation(menu);
-
-        logoAnim.setOnFinished(e -> searchAnim.play());
-        searchAnim.setOnFinished(e -> menuAnim.play());
-        logoAnim.play();
-
-        // ===== LOAD PRODUCTS =====
-        afficherProduitsDirect();
+        playTopBarAnimation();
+        loadProducts();
     }
 
-    // ================= DISPLAY PRODUCTS (PreparedStatement) =================
-    private void afficherProduitsDirect() {
+    // ================= LOAD PRODUCTS =================
+    private void loadProducts() {
 
-        productContainer.getChildren().clear();
+        String sql = "SELECT produitid, nom, prix, stock, images FROM produit";
 
-        String query = "SELECT * FROM produit";
+        try (Connection conn = Database.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-        try (Connection cnx = Database.getConnection();
-             PreparedStatement ps = cnx.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
+            productContainer.getChildren().clear();
 
             while (rs.next()) {
 
-                // ===== CARD =====
-                HBox card = new HBox(15);
-                card.setStyle("""
-                    -fx-background-color: white;
-                    -fx-padding: 15;
-                    -fx-background-radius: 15;
-                    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 4);
-                """);
+                int produitId = rs.getInt("produitid");
 
-                // ===== IMAGE =====
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(80);
-                imageView.setFitHeight(80);
-                imageView.setPreserveRatio(true);
-
-                try {
-                    String imgPath =
-                            "/com/example/projetpharmacie/images/" +
-                                    rs.getString("images");
-
-                    Image img = new Image(
-                            getClass().getResourceAsStream(imgPath)
-                    );
-                    imageView.setImage(img);
-
-                } catch (Exception e) {
-                    System.out.println("❌ Image non trouvée");
-                }
-
-                // ===== TEXT =====
-                VBox info = new VBox(5);
-
-                Text nom = new Text(rs.getString("nom"));
-                nom.setStyle("-fx-font-size: 18; -fx-font-weight: bold;");
-
-                Text prix = new Text(
-                        "Prix : " + rs.getDouble("prix") + " DH"
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource(
+                                "/com/example/projetpharmacie/product-card.fxml"
+                        )
                 );
 
-                Text stock = new Text(
-                        "Stock : " + rs.getInt("stock")
+                HBox card = loader.load();
+
+                ProductCardController controller = loader.getController();
+                controller.setData(
+                        rs.getString("nom"),
+                        rs.getDouble("prix"),
+                        rs.getInt("stock"),
+                        getClass().getResource(
+                                "/images/" + rs.getString("images")
+                        ).toExternalForm()
                 );
 
-                info.getChildren().addAll(nom, prix, stock);
-
-                card.getChildren().addAll(imageView, info);
+                card.setOnMouseClicked(e -> openProductDetails(produitId));
                 productContainer.getChildren().add(card);
             }
+
+            playCardsAnimation(); // animation ناعمة
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // ================= ANIMATION METHOD =================
-    private ParallelTransition animation(Node node) {
-
-        TranslateTransition slide =
-                new TranslateTransition(Duration.seconds(1), node);
-        slide.setFromY(-50);
-        slide.setToY(0);
-
-        FadeTransition fade =
-                new FadeTransition(Duration.seconds(1), node);
-        fade.setFromValue(0);
-        fade.setToValue(1);
-
-        return new ParallelTransition(slide, fade);
-    }
-
-    // ================= NAVIGATION =================
-    @FXML
-    private void goBackToLogin(ActionEvent event) {
+    // ================= OPEN DETAILS =================
+    private void openProductDetails(int produitId) {
         try {
-            Stage stage =
-                    (Stage) ((Node) event.getSource())
-                            .getScene().getWindow();
-
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
-                            "/com/example/projetpharmacie/login.fxml"
+                            "/com/example/projetpharmacie/product-details.fxml"
                     )
             );
 
-            Scene scene = new Scene(
-                    loader.load(),
-                    stage.getWidth(),
-                    stage.getHeight()
-            );
+            Scene scene = new Scene(loader.load());
 
+            ProductDetailsController controller = loader.getController();
+            controller.setProduitId(produitId);
+
+            Stage stage = (Stage) productContainer.getScene().getWindow();
             stage.setScene(scene);
             stage.setMaximized(true);
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    // ================= TOP BAR ANIMATION =================
+    private void playTopBarAnimation() {
+
+        HBox topBar = (HBox) menuButton.getParent();
+        Node logo = topBar.getChildren().get(0);
+        Node search = searchField;
+        Node menu = menuButton;
+
+        logo.setOpacity(0);
+        search.setOpacity(0);
+        menu.setOpacity(0);
+
+        animateTopNode(logo, 0);
+        animateTopNode(search, 120);
+        animateTopNode(menu, 240);
+    }
+
+    private void animateTopNode(Node node, int delay) {
+
+        TranslateTransition slide = new TranslateTransition(
+                Duration.millis(500), node
+        );
+        slide.setFromY(-25);
+        slide.setToY(0);
+        slide.setInterpolator(Interpolator.EASE_OUT);
+
+        FadeTransition fade = new FadeTransition(
+                Duration.millis(500), node
+        );
+        fade.setFromValue(0);
+        fade.setToValue(1);
+
+        ParallelTransition anim =
+                new ParallelTransition(node, slide, fade);
+
+        anim.setDelay(Duration.millis(delay));
+        anim.play();
+    }
+
+    // ================= SMOOTH CARDS ANIMATION =================
+    private void playCardsAnimation() {
+
+        int delay = 0;
+
+        for (Node card : productContainer.getChildren()) {
+
+            card.setOpacity(0);
+            card.setTranslateY(25);
+
+            FadeTransition fade = new FadeTransition(
+                    Duration.millis(650), card
+            );
+            fade.setFromValue(0);
+            fade.setToValue(1);
+            fade.setInterpolator(Interpolator.EASE_OUT);
+
+            TranslateTransition slide = new TranslateTransition(
+                    Duration.millis(650), card
+            );
+            slide.setFromY(25);
+            slide.setToY(0);
+            slide.setInterpolator(Interpolator.EASE_OUT);
+
+            ParallelTransition anim =
+                    new ParallelTransition(card, fade, slide);
+
+            anim.setDelay(Duration.millis(delay));
+            anim.play();
+
+            delay += 150; // بطيئة و مريحة
         }
     }
 }
