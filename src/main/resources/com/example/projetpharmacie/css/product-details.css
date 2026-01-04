@@ -1,0 +1,81 @@
+/* ================= ROOT ================= */
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: linear-gradient(to bottom right, #f0fdfa, #ecfeff);
+}
+
+/* ================= TOP BAR ================= */
+.top-bar {
+    -fx-background-color: white;
+    -fx-padding: 14 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0, 0, 4);
+}
+
+/* ================= APP TITLE ================= */
+.app-title {
+    -fx-fill: #0f766e;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+/* ================= PRODUCT CARD ================= */
+.product-card {
+    -fx-background-color: white;
+    -fx-padding: 30;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-color: #e5e7eb;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 14, 0, 0, 6);
+}
+
+/* ================= PRODUCT TEXT ================= */
+.product-title {
+    -fx-fill: #134e4a;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.product-price {
+    -fx-fill: #0f766e;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.product-stock {
+    -fx-fill: #64748b;
+    -fx-font-size: 14px;
+}
+
+/* ================= BUTTONS ================= */
+.btn-t {
+    -fx-pref-width: 200;
+    -fx-pref-height: 44;
+    -fx-background-color: #14b8a6;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 12 30;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+.btn-t:hover {
+    -fx-background-color: #0f766e;
+    -fx-text-fill: #f0fdfa;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(15,118,110,0.6), 18, 0, 0, 6);
+}
+
+/* ================= BACK BUTTON ================= */
+.btn-back {
+    -fx-background-color: transparent;
+    -fx-text-fill: #0f766e;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+.btn-back:hover {
+    -fx-text-fill: #134e4a;
+    -fx-underline: true;
+}

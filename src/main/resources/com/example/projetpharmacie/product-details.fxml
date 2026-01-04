@@ -1,20 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.projetpharmacie.ProductDetailsController"
-      spacing="15"
-      alignment="TOP_CENTER">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.ProductDetailsController"
+            stylesheets="@css/product-details.css">
 
-    <ImageView fx:id="productImage"
-               fitWidth="250"
-               preserveRatio="true"/>
+    <!-- TOP BAR -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT" styleClass="top-bar">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
 
-    <Text fx:id="productName"/>
-    <Text fx:id="productPrice"/>
-    <Text fx:id="productStock"/>
+            <!-- LOGO + NAME -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitWidth="40" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/logof2.png"/>
+                    </image>
+                </ImageView>
+                <Label text="SwiftCare" styleClass="app-title"/>
+            </HBox>
 
-</VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER -->
+    <center>
+        <VBox alignment="CENTER" spacing="25">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40"/>
+            </padding>
+
+            <!-- PRODUCT CARD -->
+            <VBox fx:id="productCard"
+                  alignment="CENTER"
+                  spacing="15"
+                  styleClass="product-card"
+                  maxWidth="420">
+
+                <ImageView fx:id="productImage"
+                           fitWidth="220"
+                           preserveRatio="true"/>
+
+                <Text fx:id="productName"
+                      styleClass="product-title"/>
+
+                <Text fx:id="productPrice"
+                      styleClass="product-price"/>
+
+                <Text fx:id="productStock"
+                      styleClass="product-stock"/>
+
+                <Button text="Ajouter au panier" styleClass="btn-t"/>
+
+                <Button text="Back" styleClass="btn-back" onAction="#goBack"/>
+
+            </VBox>
+        </VBox>
+    </center>
+
+
+</BorderPane>

@@ -1,6 +1,7 @@
 package com.example.projetpharmacie;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -18,11 +19,14 @@ public class ProductCardController {
 
     @FXML
     private Text productStock;
+    @FXML
+    private Label newBadge;
 
-    public void setData(String nom, double prix, int stock, String imagePath) {
+    public void setData(String nom, double prix, int stock, String imagePath,boolean isNew) {
         productName.setText(nom);
         productPrice.setText("Prix : " + prix + " DH");
         productStock.setText("Stock : " + stock);
         productImage.setImage(new Image(imagePath));
+        newBadge.setVisible(isNew);
     }
 }

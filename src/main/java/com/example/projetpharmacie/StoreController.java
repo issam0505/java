@@ -1,6 +1,7 @@
 package com.example.projetpharmacie;
 
 import javafx.animation.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -14,38 +15,73 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class StoreController {
+    @FXML
+    private TextField searchField;
+    @FXML
+    private void goToLogin() {
+        try {
+            Stage stage = (Stage) menuButton.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/projetpharmacie/login.fxml")
+            );
+
+            Scene scene = new Scene(
+                    loader.load(),
+                    stage.getWidth(),
+                    stage.getHeight()
+            );
+
+            stage.setScene(scene);
+            stage.setTitle("SwiftCare/Login");
+            stage.setMaximized(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private MenuButton menuButton;
 
-    @FXML
-    private TextField searchField;
+
 
     @FXML
     private FlowPane productContainer;
 
+    private  String search;
+    private   String sql = "SELECT produitid, nom, prix, stock, images , new FROM  produit where new = true ";
+
     @FXML
     public void initialize() {
+        MenuItem byCategory = new MenuItem("by category");
+        MenuItem panier = new MenuItem("Panier");
+        MenuItem profile = new MenuItem("Profile");
+        MenuItem logout = new MenuItem("Déconnexion");
+        byCategory.setOnAction(e -> loadProducts());
+        panier.setOnAction(e -> loadProducts());
+        profile.setOnAction(e ->loadProducts());
+        logout.setOnAction(e -> goToLogin());
 
         menuButton.getItems().addAll(
-                new MenuItem("Produits"),
-                new MenuItem("Clients"),
-                new MenuItem("Déconnexion")
+                byCategory,
+                panier,
+                profile,
+                logout
         );
-
         playTopBarAnimation();
         loadProducts();
     }
 
+
     // ================= LOAD PRODUCTS =================
-    private void loadProducts() {
-
-        String sql = "SELECT produitid, nom, prix, stock, images FROM produit";
-
+    @FXML
+    private void loadProducts(){
         try (Connection conn = Database.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -62,7 +98,7 @@ public class StoreController {
                         )
                 );
 
-                HBox card = loader.load();
+                Node card = loader.load();
 
                 ProductCardController controller = loader.getController();
                 controller.setData(
@@ -71,7 +107,8 @@ public class StoreController {
                         rs.getInt("stock"),
                         getClass().getResource(
                                 "/images/" + rs.getString("images")
-                        ).toExternalForm()
+                        ).toExternalForm(),
+                        rs.getBoolean("new")
                 );
 
                 card.setOnMouseClicked(e -> openProductDetails(produitId));
@@ -84,7 +121,6 @@ public class StoreController {
             e.printStackTrace();
         }
     }
-
     // ================= OPEN DETAILS =================
     private void openProductDetails(int produitId) {
         try {
@@ -94,19 +130,25 @@ public class StoreController {
                     )
             );
 
-            Scene scene = new Scene(loader.load());
+            Stage stage = (Stage) productContainer.getScene().getWindow();
+
+            Scene scene = new Scene(
+                    loader.load(),
+                    stage.getWidth(),
+                    stage.getHeight()
+            );
 
             ProductDetailsController controller = loader.getController();
             controller.setProduitId(produitId);
 
-            Stage stage = (Stage) productContainer.getScene().getWindow();
             stage.setScene(scene);
-            stage.setMaximized(true);
-
+            stage.setMaximized(true); // احتياط
+            stage.setTitle("SwiftCare/productdetails");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // ================= TOP BAR ANIMATION =================
     private void playTopBarAnimation() {
@@ -177,7 +219,31 @@ public class StoreController {
             anim.setDelay(Duration.millis(delay));
             anim.play();
 
-            delay += 150; // بطيئة و مريحة
+            delay += 150;
         }
     }
+    @FXML
+    private void loadProductall(){
+        sql = "SELECT produitid, nom, prix, stock, images , new FROM  produit";
+        loadProducts();
+    }
+    @FXML
+    private void recuper(){
+        search = searchField.getText();
+
+        try (Connection conn = Database.getConnection()) {
+            if (conn != null) {
+                String query1 = "SELECT produitid FROM produit WHERE nom=?";
+                PreparedStatement pst1 = conn.prepareStatement(query1);
+                pst1.setString(1, search);
+                ResultSet rs = pst1.executeQuery();
+                if (rs.next()) {
+                    openProductDetails(rs.getInt("produitid"));
+                }
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

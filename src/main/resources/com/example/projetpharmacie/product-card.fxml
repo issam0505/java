@@ -2,27 +2,37 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Text?>
 
-<HBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.projetpharmacie.ProductCardController"
-      spacing="12"
-      minWidth="250"
-      maxWidth="250"
-      minHeight="140"
-      maxHeight="140"
-      styleClass="product-card">
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.projetpharmacie.ProductCardController"
+           minWidth="250"
+           maxWidth="250"
+           minHeight="140"
+           maxHeight="140"
+           styleClass="product-card">
 
-    <ImageView fx:id="productImage"
-               fitWidth="110"
-               fitHeight="110"
-               preserveRatio="true"/>
+    <!-- BADGE NEW (bottom right) -->
+    <Label fx:id="newBadge"
+           text="NEW"
+           styleClass="new-badge"
+           StackPane.alignment="BOTTOM_RIGHT"
+           visible="false"/>
+    <!-- CARD CONTENT -->
+    <HBox spacing="12">
+        <ImageView fx:id="productImage"
+                   fitWidth="110"
+                   fitHeight="110"
+                   preserveRatio="true"/>
 
-    <VBox spacing="6">
-        <Text fx:id="productName" styleClass="product-title"/>
-        <Text fx:id="productPrice" styleClass="product-price"/>
-        <Text fx:id="productStock" styleClass="product-stock"/>
-    </VBox>
+        <VBox spacing="6">
+            <Text fx:id="productName" styleClass="product-title"/>
+            <Text fx:id="productPrice" styleClass="product-price"/>
+            <Text fx:id="productStock" styleClass="product-stock"/>
+        </VBox>
+    </HBox>
 
-</HBox>
+</StackPane>

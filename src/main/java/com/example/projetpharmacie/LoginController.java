@@ -107,14 +107,17 @@ public class LoginController {
                         FXMLLoader loader = new FXMLLoader(
                                 getClass().getResource("/com/example/projetpharmacie/store.fxml")
                         );
+                        int clientId = rs1.getInt("clientid");
+                        String nom = rs1.getString("nom");
 
+                        UserSession.getInstance().setUser(clientId, nom, email);
                         Scene scene = new Scene(loader.load(),
                                 stage.getWidth(),
                                 stage.getHeight());
 
                         stage.setScene(scene);
                         stage.setMaximized(true);
-
+                        stage.setTitle("SwiftCare/Store");
                     } else if (rs2.next()) {
 
                         Stage stage = (Stage) ((Node) event.getSource())

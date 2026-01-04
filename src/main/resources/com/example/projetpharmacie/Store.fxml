@@ -7,12 +7,14 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.text.Text?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.projetpharmacie.StoreController"
             prefWidth="1100"
@@ -35,7 +37,7 @@
                         <Image url="@../../../images/logof2.png"/>
                     </image>
                 </ImageView>
-                <Text text="SwiftCare" styleClass="app-title"/>
+                <Label text="SwiftCare" styleClass="app-title"/>
             </HBox>
 
             <Region HBox.hgrow="ALWAYS"/>
@@ -43,6 +45,7 @@
             <TextField fx:id="searchField"
                        styleClass="search-bar"
                        promptText="Rechercher un produit..."/>
+            <Button text="search" onAction="#recuper"/>
 
             <Region HBox.hgrow="ALWAYS"/>
 
@@ -52,24 +55,22 @@
         </HBox>
     </top>
 
-    <!-- CENTER (SCROLLABLE PAGE) -->
+    <!-- CENTER -->
     <center>
         <ScrollPane fitToWidth="true"
                     hbarPolicy="NEVER"
                     vbarPolicy="AS_NEEDED"
                     styleClass="scroll-pane">
 
-            <VBox spacing="30"
-                  alignment="TOP_CENTER">
+            <VBox spacing="30" alignment="TOP_CENTER">
 
-                <!-- WELCOME -->
-                <Text text="Votre pharmacie, plus proche de vous"
-                      styleClass="welcome-title" translateY="20"/>
+                <Label text="Votre pharmacie, plus proche de vous"
+                       styleClass="welcome-title" translateY="20"/>
 
-                <Text text="Découvrez une large sélection de produits pharmaceutiques fiables, disponibles immédiatement et adaptés à vos besoins quotidiens."
-                      styleClass="welcome-desc"
-                      wrappingWidth="750"
-                      textAlignment="CENTER"/>
+                <Label text="Découvrez une large sélection de produits pharmaceutiques fiables, disponibles immédiatement et adaptés à vos besoins quotidiens."
+                       styleClass="welcome-desc"
+                       wrapText="true"
+                       maxWidth="750"/>
 
                 <!-- PRODUCTS -->
                 <FlowPane fx:id="productContainer"
@@ -77,23 +78,18 @@
                           vgap="20"
                           prefWrapLength="1000"
                           alignment="TOP_LEFT">
-
                     <padding>
                         <Insets top="20" right="20" bottom="20" left="20"/>
                     </padding>
-
                 </FlowPane>
 
-                <!-- FOOTER / TIWTIW -->
-                <HBox spacing="15"
-                      alignment="CENTER"
-                      maxHeight="350"
+                <!-- FOOTER -->
+                <HBox alignment="CENTER"
                       prefWidth="1000"
                       styleClass="tiwtiw">
 
                     <VBox spacing="20" alignment="CENTER">
 
-                        <!-- LOGO + NOM -->
                         <HBox spacing="10" alignment="CENTER">
                             <ImageView fitWidth="60" preserveRatio="true">
                                 <image>
@@ -104,18 +100,27 @@
                         </HBox>
 
                         <!-- AVANTAGES -->
-                        <VBox spacing="8" alignment="CENTER">
-                            <Text text="✔ Produits fiables &amp; disponibles immédiatement" styleClass="footer-advantages"/>
-                            <Text text="✔ Livraison rapide &amp; sécurisée" styleClass="footer-advantages"/>
-                            <Text text="✔ Conseils pharmaceutiques personnalisés" styleClass="footer-advantages"/>
+                        <VBox spacing="8" alignment="CENTER_LEFT">
+                            <Label text="🛡️ Produits pharmaceutiques certifiés et fiables"
+                                   styleClass="footer-advantages"/>
+                            <Label text="🚚 Livraison rapide, sécurisée et discrète"
+                                   styleClass="footer-advantages"/>
+                            <Label text="👨‍⚕️ Conseils personnalisés par des pharmaciens qualifiés"
+                                   styleClass="footer-advantages"/>
+                            <Label text="⏰ Commande en ligne disponible 24h/24 et 7j/7"
+                                   styleClass="footer-advantages"/>
+                            <Label text="🔒 Protection totale de vos données personnelles"
+                                   styleClass="footer-advantages"/>
+                            <HBox alignment="CENTER" spacing="20" styleClass="back-btn-container">
+                                <Button text="plusieur produit" styleClass="btn-t"  onAction="#loadProductall"/>
+                            </HBox>
+
                         </VBox>
 
                     </VBox>
-
                 </HBox>
 
             </VBox>
-
         </ScrollPane>
     </center>
 
