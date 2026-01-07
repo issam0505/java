@@ -1,0 +1,132 @@
+/* ================= ROOT ================= */
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Display", Arial;
+    -fx-background-color: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+}
+
+/* ================= HEADER PHARMACIEN ================= */
+.pharma-header {
+    -fx-background-color: white;
+    -fx-padding: 20 30;
+    -fx-effect: dropshadow(gaussian, rgba(15, 118, 110, 0.2), 16, 0, 0, 6);
+}
+
+.pharma-title {
+    -fx-fill: linear-gradient(to right, #0f766e, #14b8a6);
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);
+}
+
+/* ================= FORM AJOUT ================= */
+.pharma-form {
+    -fx-background-color: white;
+    -fx-padding: 24 28;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(15, 118, 110, 0.15), 20, 0, 0, 8);
+}
+
+/* Labels des champs */
+.field-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+    -fx-font-weight: 700;
+    -fx-padding: 0 0 2 4;
+}
+
+.pharma-input {
+    -fx-background-color: #f0fdfa;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #99f6e4;
+    -fx-border-width: 2;
+    -fx-padding: 12 18;
+    -fx-pref-width: 180;
+    -fx-font-size: 14px;
+    -fx-text-fill: #0f766e;
+}
+
+.pharma-input:focused {
+    -fx-border-color: #14b8a6;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(20, 184, 166, 0.2), 12, 0, 0, 4);
+}
+
+/* ================= BUTTONS ================= */
+.pharma-btn {
+    -fx-background-color: linear-gradient(to right, #14b8a6, #0f766e);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14;
+    -fx-padding: 12 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(15, 118, 110, 0.4), 12, 0, 0, 6);
+}
+
+.pharma-btn:hover {
+    -fx-background-color: linear-gradient(to right, #0f766e, #0d9488);
+    -fx-scale-x: 1.08;
+    -fx-scale-y: 1.08;
+    -fx-effect: dropshadow(gaussian, rgba(15, 118, 110, 0.5), 16, 0, 0, 8);
+}
+
+.pharma-btn:pressed {
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+/* Bouton secondaire */
+.pharma-btn-secondary {
+    -fx-background-color: transparent;
+    -fx-border-color: #14b8a6;
+    -fx-border-width: 2;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-text-fill: #0f766e;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 12 20;
+    -fx-cursor: hand;
+}
+
+.pharma-btn-secondary:hover {
+    -fx-background-color: #f0fdfa;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+/* ================= FLOW PRODUITS ================= */
+.pharma-products {
+    -fx-padding: 24;
+    -fx-background-color: transparent;
+}
+
+/* ================= STOCK ALERTS - Supprimé bordures ================= */
+
+.new-badge {
+    -fx-background-color: #f97316; /* orange */
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0, 0, 2);
+    -fx-translate-x: -10;
+    -fx-translate-y: -10;
+}
+
+.out-stock-badge {
+    -fx-background-color: linear-gradient(to right, #dc2626, #ef4444);
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 6 14;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(220, 38, 38, 0.4), 10, 0, 0, 4);
+    -fx-translate-x: 6;
+    -fx-translate-y: 6;
+}
+

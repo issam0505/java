@@ -33,7 +33,7 @@ public class ProductDetailsController {
     private Text productStock;
 
     @FXML
-    private javafx.scene.layout.VBox productCard; // animation
+    private javafx.scene.layout.VBox productCard; 
 
     private int produitId;
 

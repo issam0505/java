@@ -1,15 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.projetpharmacie.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
-    <Text layoutX="50" layoutY="50" text="Bienvenue dans la Admin!" />
-</AnchorPane>
+            stylesheets="@css/admin.css">
+
+    <!-- HEADER -->
+    <top>
+        <VBox styleClass="admin-header">
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+                    <Text text="Tableau de Bord" styleClass="admin-title"/>
+                    <Text text="Analyse des performances et état des stocks" styleClass="admin-subtitle"/>
+                </VBox>
+                <Button text="Déconnexion" onAction="#handleLogout" styleClass="logout-btn"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- MAIN CONTENT -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="25" styleClass="stats-container">
+                
+                <!-- STATISTICS CARDS -->
+                <HBox spacing="20" alignment="CENTER">
+                    
+                    <!-- Clients Card -->
+                    <VBox styleClass="stat-card" spacing="10" alignment="CENTER">
+                        <Text fx:id="clientCount" text="0" styleClass="stat-value"/>
+                        <Label text="CLIENTS" styleClass="stat-label"/>
+                    </VBox>
+                    
+                    <!-- Produits Card -->
+                    <VBox styleClass="stat-card" spacing="10" alignment="CENTER">
+                        <Text fx:id="produitCount" text="0" styleClass="stat-value"/>
+                        <Label text="PRODUITS" styleClass="stat-label"/>
+                    </VBox>
+                    
+                    <!-- Pharmaciens Card -->
+                    <VBox styleClass="stat-card" spacing="10" alignment="CENTER">
+                        <Text fx:id="pharmacienCount" text="0" styleClass="stat-value"/>
+                        <Label text="PHARMACIENS" styleClass="stat-label"/>
+                    </VBox>
+                    
+                </HBox>
+
+                <!-- CHARTS ROW -->
+                <HBox spacing="20" alignment="CENTER">
+                    
+                    <!-- Top 5 Produits -->
+                    <VBox styleClass="chart-container" spacing="15" HBox.hgrow="ALWAYS">
+                        <Label text="Top 5 Meilleures Ventes" styleClass="chart-title"/>
+                        <VBox fx:id="topProductsChart" spacing="8" styleClass="bar-chart-container"/>
+                    </VBox>
+                    
+                    <!-- Alertes Stock -->
+                    <VBox styleClass="chart-container" spacing="15" HBox.hgrow="ALWAYS">
+                        <Label text="Alertes Stocks Bas" styleClass="chart-title"/>
+                        <VBox fx:id="stockAlertsChart" alignment="CENTER" styleClass="pie-chart-container"/>
+                    </VBox>
+                    
+                </HBox>
+
+                <!-- GESTION DES CLIENTS -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Gestion des Clients" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Ajouter Client" onAction="#showAddClient" styleClass="admin-btn"/>
+                    </HBox>
+                    
+                    <TableView fx:id="clientTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="clientIdCol" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="clientNomCol" text="Nom" prefWidth="150"/>
+                            <TableColumn fx:id="clientEmailCol" text="Email" prefWidth="200"/>
+                            <TableColumn fx:id="clientTelCol" text="Téléphone" prefWidth="130"/>
+                            <TableColumn fx:id="clientActionsCol" text="Actions" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- GESTION DES PHARMACIENS -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Gestion des Pharmaciens" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Ajouter Pharmacien" onAction="#showAddPharmacien" styleClass="admin-btn"/>
+                    </HBox>
+                    
+                    <TableView fx:id="pharmacienTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="pharmacienIdCol" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="pharmacienNomCol" text="Nom" prefWidth="150"/>
+                            <TableColumn fx:id="pharmacienEmailCol" text="Email" prefWidth="200"/>
+                            <TableColumn fx:id="pharmacienContactCol" text="Contact" prefWidth="130"/>
+                            <TableColumn fx:id="pharmacienActionsCol" text="Actions" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- GESTION DES PRODUITS -->
+                <VBox spacing="15">
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Gestion des Produits" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Exporter CSV" onAction="#exportProduitsToCSV" styleClass="admin-btn"/>
+                    </HBox>
+                    
+                    <TableView fx:id="produitTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="produitIdCol" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="produitNomCol" text="Nom" prefWidth="150"/>
+                            <TableColumn fx:id="produitPrixCol" text="Prix (DH)" prefWidth="100"/>
+                            <TableColumn fx:id="produitStockCol" text="Stock" prefWidth="100"/>
+                            <TableColumn fx:id="produitActionsCol" text="Actions" prefWidth="200"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

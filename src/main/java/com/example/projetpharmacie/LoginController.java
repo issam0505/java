@@ -141,7 +141,7 @@ public class LoginController {
                                 .getScene().getWindow();
 
                         FXMLLoader loader = new FXMLLoader(
-                                getClass().getResource("/com/example/projetpharmacie/store.fxml")
+                                getClass().getResource("/com/example/projetpharmacie/Pharmacien.fxml")
                         );
 
                         Scene scene = new Scene(loader.load(),

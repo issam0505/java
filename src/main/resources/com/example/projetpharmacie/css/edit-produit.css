@@ -1,0 +1,122 @@
+/* ================= EDIT PRODUIT - MODERN DESIGN ================= */
+
+/* Root Container */
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Display", Arial;
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Main VBox Container */
+.edit-container {
+    -fx-background-color: white;
+    -fx-padding: 40 35;
+    -fx-background-radius: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 30, 0, 0, 10);
+    -fx-spacing: 20;
+}
+
+/* Title Label */
+.edit-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 0 0 10 0;
+}
+
+/* Subtitle */
+.edit-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #64748b;
+    -fx-padding: 0 0 20 0;
+}
+
+/* Nom du produit */
+.product-name-display {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #667eea;
+    -fx-padding: 5 0;
+}
+
+/* Text Fields */
+.edit-field {
+    -fx-background-color: #f8fafc;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-padding: 14 18;
+    -fx-font-size: 15px;
+    -fx-text-fill: #1e293b;
+    -fx-pref-height: 50;
+}
+
+.edit-field:focused {
+    -fx-border-color: #667eea;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 12, 0, 0, 4);
+}
+
+/* Buttons Container */
+.button-container {
+    -fx-spacing: 12;
+    -fx-padding: 10 0 0 0;
+}
+
+/* Primary Button - Enregistrer */
+.btn-save {
+    -fx-background-color: linear-gradient(to right, #10b981, #059669);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 16 0;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.4), 12, 0, 0, 6);
+    -fx-pref-width: 280;
+}
+
+.btn-save:hover {
+    -fx-background-color: linear-gradient(to right, #059669, #047857);
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(16, 185, 129, 0.5), 16, 0, 0, 8);
+}
+
+.btn-save:pressed {
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+/* Danger Button - Supprimer */
+.btn-delete {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-padding: 14 0;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-pref-width: 280;
+    -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.3), 10, 0, 0, 4);
+}
+
+.btn-delete:hover {
+    -fx-background-color: #dc2626;
+    -fx-scale-y: 1.03;
+    -fx-scale-x: 1.03;
+    -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.4), 12, 0, 0, 6);
+}
+
+.btn-delete:pressed {
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+/* Icon Labels */
+.field-icon {
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 12px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 0 6 2;
+}

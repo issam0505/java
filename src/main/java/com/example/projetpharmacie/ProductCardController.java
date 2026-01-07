@@ -21,12 +21,26 @@ public class ProductCardController {
     private Text productStock;
     @FXML
     private Label newBadge;
+    @FXML
+    private Label outStockBadge;
 
-    public void setData(String nom, double prix, int stock, String imagePath,boolean isNew) {
+    public void setData(String nom, double prix, int stock,
+            String imagePath, boolean isNew) {
+
         productName.setText(nom);
-        productPrice.setText("Prix : " + prix + " DH");
+        productPrice.setText(prix + " DH");
         productStock.setText("Stock : " + stock);
         productImage.setImage(new Image(imagePath));
+
+        // Badge NEW
         newBadge.setVisible(isNew);
+
+        // 👉 ÉTAPE 3 : ACTIVER OUT OF STOCK
+        if (stock == 0) {
+            outStockBadge.setVisible(true);
+        } else {
+            outStockBadge.setVisible(false);
+        }
     }
+
 }

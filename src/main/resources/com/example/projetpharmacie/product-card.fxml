@@ -21,6 +21,20 @@
            styleClass="new-badge"
            StackPane.alignment="BOTTOM_RIGHT"
            visible="false"/>
+           
+    <!-- BADGE OUT OF STOCK (bottom left) -->
+    <Label fx:id="outStockBadge"
+           text="OUT OF STOCK"
+           styleClass="out-stock-badge"
+           StackPane.alignment="BOTTOM_LEFT"
+           visible="false"/>
+	
+	           
+           
+           
+           
+           
+           
     <!-- CARD CONTENT -->
     <HBox spacing="12">
         <ImageView fx:id="productImage"

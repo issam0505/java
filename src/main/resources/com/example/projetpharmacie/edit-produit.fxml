@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.projetpharmacie.EditProduitController"
+      alignment="CENTER"
+      prefWidth="450"
+      prefHeight="500"
+      stylesheets="@css/edit-produit.css">
+
+    <!-- Container principal avec effet de carte -->
+    <VBox styleClass="edit-container" maxWidth="380">
+        
+        <!-- Header -->
+        <Label text="Modifier le produit" styleClass="edit-title"/>
+        <Label fx:id="productNameLabel" text="Produit" styleClass="product-name-display"/>
+        <Label text="Mettez à jour les informations du produit" styleClass="edit-subtitle"/>
+        
+        <!-- Prix Field -->
+        <VBox spacing="8">
+            <Label text="PRIX (DH)" styleClass="field-icon"/>
+            <TextField fx:id="priceField" promptText="Ex: 45.50" styleClass="edit-field"/>
+        </VBox>
+        
+        <!-- Stock Field -->
+        <VBox spacing="8">
+            <Label text="STOCK DISPONIBLE" styleClass="field-icon"/>
+            <TextField fx:id="stockField" promptText="Ex: 100" styleClass="edit-field"/>
+        </VBox>
+        
+        <!-- Buttons -->
+        <VBox styleClass="button-container">
+            <Button text="Enregistrer les modifications" onAction="#updateProduit" styleClass="btn-save"/>
+            <Button text="Supprimer le produit" onAction="#deleteProduit" styleClass="btn-delete"/>
+        </VBox>
+        
+    </VBox>
+
+</VBox>
