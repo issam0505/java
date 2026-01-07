@@ -1,6 +1,19 @@
 # SwiftCare 🏥💊  
 Application de Gestion de Pharmacie – JavaFX
 
+## 🛠️ Langages & Technologies
+- **Java**
+- **JavaFX**
+- **MySQL**
+- **JDBC**
+- **MVC Architecture**
+- **FXML**
+- **Scene Builder**
+- **SQL**
+- **Git**
+
+---
+
 ## 📌 Description
 **SwiftCare** est une application desktop de gestion de pharmacie développée en **Java avec JavaFX**. Elle permet d’automatiser et de centraliser les opérations quotidiennes d’une pharmacie telles que la gestion des stocks de médicaments, des ventes, des commandes, des utilisateurs et des rapports financiers. L’objectif principal est d’améliorer l’efficacité, de réduire les erreurs humaines et d’offrir une meilleure qualité de service.
 
@@ -13,11 +26,12 @@ Application de Gestion de Pharmacie – JavaFX
 
 ## ⚙️ Technologies Utilisées
 - **Langage** : Java  
-- **Interface graphique** : JavaFX  
+- **Interface graphique** : JavaFX (FXML)  
 - **Architecture** : MVC (Modèle – Vue – Contrôleur)  
 - **Base de données** : MySQL  
-- **Connexion BD** : JDBC  
-- **Outils** : Scene Builder (optionnel), IDE Java (IntelliJ / Eclipse / NetBeans)
+- **Accès aux données** : JDBC  
+- **Outils** : Scene Builder, Git  
+- **IDE recommandé** : IntelliJ IDEA / Eclipse / NetBeans  
 
 ## 🧩 Principales Fonctionnalités
 - Gestion des médicaments (ajout, modification, suppression, stock, dates de péremption)
@@ -31,9 +45,9 @@ Application de Gestion de Pharmacie – JavaFX
 
 ## 🏗️ Architecture du Système
 Le projet suit le modèle **MVC** :
-- **Model** : gestion des entités et accès à la base de données  
-- **View** : interfaces graphiques développées avec JavaFX  
-- **Controller** : gestion de la logique métier et des interactions utilisateur  
+- **Model** : entités, DAO, accès base de données  
+- **View** : interfaces graphiques JavaFX (FXML)  
+- **Controller** : logique métier et gestion des événements  
 
 ## 🗄️ Base de Données
 La base de données contient plusieurs tables principales :
