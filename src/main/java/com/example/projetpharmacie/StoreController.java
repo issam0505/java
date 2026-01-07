@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -22,6 +23,22 @@ import java.sql.Statement;
 public class StoreController {
     @FXML
     private TextField searchField;
+    @FXML
+    private void goTopanier() {
+        try {
+            Stage stage = (Stage) menuButton.getScene().getWindow(); // stage actuel
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/projetpharmacie/addtocart.fxml"));
+            BorderPane root = loader.load();
+
+            Scene scene = new Scene(root, stage.getWidth(), stage.getHeight());
+            stage.setScene(scene);
+            stage.setTitle("SwiftCare / Panier");
+            stage.setMaximized(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     private void goToLogin() {
         try {
@@ -63,9 +80,9 @@ public class StoreController {
         MenuItem panier = new MenuItem("Panier");
         MenuItem profile = new MenuItem("Profile");
         MenuItem logout = new MenuItem("Déconnexion");
-        byCategory.setOnAction(e -> loadProducts());
-        panier.setOnAction(e -> loadProducts());
-        profile.setOnAction(e ->loadProducts());
+        byCategory.setOnAction(e -> goToCategoriesPage());
+        panier.setOnAction(e -> goTopanier());
+        profile.setOnAction(e -> goToProfile());
         logout.setOnAction(e -> goToLogin());
 
         menuButton.getItems().addAll(
@@ -242,6 +259,44 @@ public class StoreController {
                 }
             }
         }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void goToCategoriesPage() {
+        try {
+            Stage stage = (Stage) menuButton.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/projetpharmacie/category.fxml")
+            );
+
+            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.setTitle("SwiftCare / Categories");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void goToProfile() {
+        try {
+            Stage stage = (Stage) menuButton.getScene().getWindow();
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/projetpharmacie/profile.fxml")
+            );
+
+            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+
+            stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.setTitle("SwiftCare / Profile");
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

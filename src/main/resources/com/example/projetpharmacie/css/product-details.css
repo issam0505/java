@@ -7,57 +7,42 @@
 /* ================= TOP BAR ================= */
 .top-bar {
     -fx-background-color: white;
-    -fx-padding: 14 20;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0, 0, 4);
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
 }
 
-/* ================= APP TITLE ================= */
-.app-title {
-    -fx-fill: #0f766e;
-    -fx-font-size: 26px;
-    -fx-font-weight: bold;
-}
-
-/* ================= PRODUCT CARD ================= */
+/* PRODUCT CARD */
 .product-card {
-    -fx-background-color: white;
-    -fx-padding: 30;
-    -fx-background-radius: 18;
-    -fx-border-radius: 18;
-    -fx-border-color: #e5e7eb;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 14, 0, 0, 6);
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10,0,0,5);
 }
 
-/* ================= PRODUCT TEXT ================= */
+/* TITLE & PRICE */
 .product-title {
-    -fx-fill: #134e4a;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
 
 .product-price {
-    -fx-fill: #0f766e;
     -fx-font-size: 16px;
-    -fx-font-weight: bold;
+    -fx-fill: #333333;
 }
 
 .product-stock {
-    -fx-fill: #64748b;
     -fx-font-size: 14px;
+    -fx-fill: #555555;
 }
 
-/* ================= BUTTONS ================= */
+/* BUTTONS */
 .btn-t {
-    -fx-pref-width: 200;
-    -fx-pref-height: 44;
-    -fx-background-color: #14b8a6;
+    -fx-background-color: #1a8917;
     -fx-text-fill: white;
-    -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-background-radius: 30;
-    -fx-padding: 12 30;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
 }
 .btn-t:hover {
     -fx-background-color: #0f766e;
@@ -67,15 +52,16 @@
     -fx-effect: dropshadow(gaussian, rgba(15,118,110,0.6), 18, 0, 0, 6);
 }
 
-/* ================= BACK BUTTON ================= */
 .btn-back {
-    -fx-background-color: transparent;
-    -fx-text-fill: #0f766e;
-    -fx-font-size: 14px;
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #111111;
     -fx-font-weight: bold;
-    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-padding: 8 16;
 }
-.btn-back:hover {
-    -fx-text-fill: #134e4a;
-    -fx-underline: true;
+
+/* ERROR MESSAGE */
+.error-msg {
+    -fx-font-size: 12px;
+    -fx-fill: red;
 }
