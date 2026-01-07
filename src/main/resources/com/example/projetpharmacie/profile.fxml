@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.scene.layout.VBox?>
+        <?import javafx.scene.layout.GridPane?>
+        <?import javafx.scene.layout.HBox?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.Button?>
+        <?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.projetpharmacie.ProfileController"
+      spacing="30"
+      alignment="TOP_CENTER"
+      stylesheets="@css/profile.css">
+
+    <!-- TOP BAR -->
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="top-bar">
+        <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Label text="SwiftCare" styleClass="app-title"/>
+    </HBox>
+
+    <!-- PROFILE FORM -->
+    <GridPane fx:id="profileForm" hgap="15" vgap="15">
+        <padding>
+            <Insets top="30" right="30" bottom="30" left="30"/>
+        </padding>
+
+        <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="lblNom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Email :" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="lblEmail" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Téléphone :" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Label fx:id="lblTelephone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <!-- BACK BUTTON -->
+    <Button text="← Retour au store"
+            onAction="#goBack"
+            styleClass="btn-back"/>
+
+</VBox>

@@ -1,0 +1,68 @@
+/* ===== AnchorPane Background ===== */
+.root {
+    -fx-background-color: linear-gradient(to bottom right, #f0fdfa, #ecfeff);
+}
+
+/* ===== VBox Card ===== */
+.vbox {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-padding: 40;
+    -fx-spacing: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 20,0,0,8);
+}
+
+/* ===== Labels ===== */
+.titleLabel {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #134e4a;
+}
+
+/* ===== Inputs ===== */
+.input {
+    -fx-pref-width: 250;
+    -fx-font-size: 14px;
+    -fx-padding: 8 12;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1.5;
+}
+
+.input:focused {
+    -fx-border-color: #14b8a6;
+    -fx-effect: dropshadow(gaussian, rgba(20,184,166,0.4), 5,0,0,0);
+}
+
+/* ===== Buttons ===== */
+Button {
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-background-radius: 30;
+    -fx-padding: 10 20;
+}
+
+#submitBtn {
+    -fx-background-color: #14b8a6;
+    -fx-text-fill: white;
+}
+
+#submitBtn:hover {
+    -fx-background-color: #0f766e;
+}
+
+#backBtn {
+    -fx-background-color: #f44336;
+    -fx-text-fill: white;
+}
+
+#backBtn:hover {
+    -fx-background-color: #c53030;
+}
+
+/* ===== Label Message ===== */
+#messageLabel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}

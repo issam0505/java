@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.Cart"
+            prefHeight="500.0" prefWidth="700.0"
+            stylesheets="@css/cart.css"> <!-- CSS fichier -->
+
+    <VBox fx:id="vbox" spacing="20" AnchorPane.topAnchor="50" AnchorPane.leftAnchor="100" AnchorPane.rightAnchor="100"
+          styleClass="vbox">
+
+        <Label text="Saisir vos informations de paiement de compt CIH " styleClass="titleLabel"/>
+
+        <TextField fx:id="cihInput" promptText="CIH" styleClass="input"/>
+        <PasswordField fx:id="passwordInput" promptText="Mot de passe" styleClass="input"/>
+
+        <Button fx:id="submitBtn" text="Submit" onAction="#submitCart"/>
+        <Label fx:id="messageLabel"/>
+        <Button fx:id="backBtn" text="Back" onAction="#goBack"/>
+    </VBox>
+</AnchorPane>

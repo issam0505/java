@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.Commande"
+            stylesheets="@css/command.css">
+
+    <!-- ===== TOP BAR ===== -->
+    <top>
+        <HBox spacing="15"
+              alignment="CENTER_LEFT"
+              styleClass="top-bar">
+
+            <ImageView fitHeight="40" preserveRatio="true">
+                <image>
+                    <Image url="@../../../images/logof2.png"/>
+                </image>
+            </ImageView>
+
+            <Label text="SwiftCare" styleClass="app-title"/>
+        </HBox>
+    </top>
+
+    <!-- ===== CENTER ===== -->
+    <center>
+        <VBox alignment="CENTER"
+              spacing="20"
+              styleClass="center-card">
+
+            <!-- User + Products + Total -->
+            <HBox spacing="20" alignment="CENTER">
+                <Label fx:id="userNameLabel"
+                       styleClass="welcome-title"/>
+
+                <Label fx:id="productsLabel"
+                       styleClass="description"/>
+
+                <Label fx:id="totalLabel"
+                       styleClass="welcome-title"/>
+            </HBox>
+
+            <!-- Livraison info -->
+            <Label text="+30 DH si avec livraison"
+                   styleClass="description"/>
+
+            <!-- Buttons -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Livraison"
+                        styleClass="btn-primary"
+                        onAction="#goLivraison"/>
+
+                <Button text="Cart"
+                        styleClass="btn-primary"
+                        onAction="#goCart"/>
+            </HBox>
+
+            <!-- Back -->
+            <Label text="← Back to cart"
+                   onMouseClicked="#goBack"
+                   style="-fx-text-fill:#0f766e; -fx-cursor: hand;"/>
+        </VBox>
+    </center>
+
+</BorderPane>

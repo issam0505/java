@@ -1,0 +1,13 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: linear-gradient(to bottom right, #f0fdfa, #ecfeff);
+}
+
+Button {
+    -fx-cursor: hand;
+}
+
+Button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

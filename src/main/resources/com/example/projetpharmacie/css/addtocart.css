@@ -1,0 +1,26 @@
+.top-bar {
+    -fx-background-color: #ffffff;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 5,0,0,2);
+}
+
+.app-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+#cartContainer {
+    -fx-padding: 20;
+}
+
+Button {
+    -fx-background-color: #0ea5e9;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 6 12;
+}
+
+Label {
+    -fx-font-size: 14px;
+}

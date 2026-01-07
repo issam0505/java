@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Pos?>
+
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.projetpharmacie.Addtocart"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <!-- Top: Logo -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-padding: 15; -fx-background-color: #f0f4f7;">
+            <ImageView fitWidth="50" preserveRatio="true">
+                <image>
+                    <Image url="@../../../images/logof2.png"/>
+                </image>
+            </ImageView>
+            <Label text="SwiftCare Pharmacie" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Center: Products + Total + Buttons -->
+    <center>
+        <VBox fx:id="centerContainer" spacing="20" alignment="TOP_CENTER"/>
+    </center>
+</BorderPane>
