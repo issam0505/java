@@ -63,5 +63,5 @@ Un fichier SQL est fourni pour créer et initialiser la base de données.
 ## 🚀 Installation et Exécution
 1. Cloner le projet :
    ```bash
-   git clone [https://github.com/username/swiftcare.git
-](https://github.com/issam0505/java.git)
+   git clone [https://github.com/issam0505/java.git
+]
